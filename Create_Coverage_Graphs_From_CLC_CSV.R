@@ -3,13 +3,10 @@ library(ggplot2)
 options(max.print = 1000000)        # Maxes out at 1,000 need to increase
 #..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..
 # Set these Variables
-
-PathOfFiles <- "C:\\Path\\to\\Directory\\Containing\\CSVs\\"
+PathOfFiles <- "C:\\PATH\\TO\\CLC\\CSV\\FILES\\"
 Image_Width <- 13
-Image_Height <- 1.8
+Image_Height <- 4
 #..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..
-# Script
-
 FileNameArray = list.files(path = PathOfFiles, pattern="*.csv", full.names = TRUE)
 breaks <- 10^(-10:10)
 minor_breaks <- rep(1:9, 21)*(10^rep(-10:10, each=9))
@@ -19,7 +16,7 @@ for(FileFullName in FileNameArray){
     Title = strsplit(tail(strsplit(FileFullName[1],"\\\\")[[1]],1),".csv")[[1]]
     Table <- read.table(file = FileFullName, header = TRUE, sep=",", dec=".")
     ggplot(Table, aes(x=Reference.position, y=Coverage, color=Mapping)) +
-            geom_line(size =0.5) +
+            geom_line(linewidth =0.5) +
             labs(title = Title, x ="Genome Position", y = "Coverage") +
             scale_color_manual(values = "#6433ff") +
             scale_y_log10(breaks = breaks, minor_breaks = minor_breaks) +
@@ -29,9 +26,9 @@ for(FileFullName in FileNameArray){
                 axis.title.y = element_text (size=10, face = 'bold'),
                 text=element_text(family="mono", colour="black"),
                 panel.background = element_blank(),
-                panel.grid.major.y = element_line(size = 0.5, linetype = "solid", colour = "grey"),
-                panel.grid.minor.y = element_line(size = 0.25, linetype = "solid", colour = "grey"),
-                axis.line = element_line(size = 0.5, linetype = "solid", colour = "black"),
+                panel.grid.major.y = element_line(linewidth = 0.5, linetype = "solid", colour = "grey"),
+                panel.grid.minor.y = element_line(linewidth = 0.25, linetype = "solid", colour = "grey"),
+                axis.line = element_line(linewidth = 0.5, linetype = "solid", colour = "black"),
                 legend.position="none"
             )
     # Save Image
