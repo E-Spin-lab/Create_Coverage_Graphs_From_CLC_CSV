@@ -30,4 +30,12 @@ Change Line 6 in the script and run in R studio.
 python Create_Coverage_Graphs_From_CLC_CSV.py --directory C:/PATH/TO/CLC/FILES/ --color darkblue
 ```
 
-![example](https://github.com/E-Spin-lab/Create_Coverage_Graphs_From_CLC_CSV/tree/main/Python_Graph_Example.png?raw=true)
+## Example Graphs
+
+### R
+
+![Example](Example_CLC_Coverage_Table.png)
+
+### Python
+
+![Example](Python_Graph_Example.png)
